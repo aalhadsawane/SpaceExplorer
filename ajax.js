@@ -4,8 +4,28 @@ var List = document.getElementById('viewList');
 var form = document.getElementById('movieForm');
 var maxRes =  document.getElementById('maxres');
 var vidCheck = document.getElementById('vidCheck');
+var checker = document.getElementById('check');
 
+checker.addEventListener('click', changecheck);
 
+vidCheck.addEventListener('click', (e) => {
+    //e.preventDefault();
+})
+
+function changecheck(e){
+    if(e.target.className != "checker"){
+        if(vidCheck.checked == true){
+            vidCheck.checked = false;
+
+            
+        }
+        else if(vidCheck.checked == false){
+            vidCheck.checked = true;
+
+        }
+    }
+    
+}
 form.addEventListener('submit', loadmovies);
 
 function loadmovies(e){
@@ -45,46 +65,49 @@ function loadmovies(e){
         var output = '';
         for(let i = 0; i < len; i++){
             try {
-                output += '<div class="searchResult card">';
+                
                 if(res.data.collection.items[i].data[0].media_type == "image"){
+                    output += '<div class="searchResult card">';
                     output += '<img class="card-img-top" src="';
                     output += res.data.collection.items[i].links[0].href;
                     output += '"></img>';
+                    output += '<div class="card-body">'
+                    output += '<h3 class="title card-title">';
+                    output += res.data.collection.items[i].data[0].title;
+                    output += '</h3>';
+                    output += '<p class="description card-text">';
+                    output += res.data.collection.items[i].data[0].description;
+                    output += '</p>';
+                    output += '</div>'
+                    output += '</div>'
                 }
                 if(res.data.collection.items[i].data[0].media_type == "video"){
 
                     if(vidCheck.checked == true){
+                        output += '<div class="searchResult card">';
                         output += '<video controls>';
                         output += '<source src="';
                         output += res.data.collection.items[i].links[0].href.replace("thumb.jpg", "orig.mp4")
                         output += '">';
                         output += '</video>';
-                        
+                        output += '<div class="card-body">'
+                        output += '<h3 class="title card-title">';
+                        output += res.data.collection.items[i].data[0].title;
+                        output += '</h3>';
+                        output += '<p class="description card-text">';
+                        output += res.data.collection.items[i].data[0].description;
+                        output += '</p>';
+                        output += '</div>'
+                        output += '</div>'
                     }
                     
                 }
-               
 
-
-
-                output += '<div class="card-body">'
-                output += '<h3 class="title card-title">';
-                output += res.data.collection.items[i].data[0].title;
-                output += '</h3>';
-                output += '<p class="description card-text">';
-                output += res.data.collection.items[i].data[0].description;
-                output += '</p>';
-                output += '</div>'
-                output += '</div>'
             } catch (error) {
                 output += "";
                 
             }
-            
-            
-            
-            //console.log(res.data.collection.items[i].data[0].title);
-            //console.log(res.data.collection.items[i].data[0].description);
+
             
         }
         if(output == ""){
