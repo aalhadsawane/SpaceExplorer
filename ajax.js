@@ -3,21 +3,26 @@ var button = document.getElementById('search');
 var List = document.getElementById('viewList');
 var form = document.getElementById('movieForm');
 var maxRes =  document.getElementById('maxres');
+var vidCheck = document.getElementById('vidCheck');
 
 
 form.addEventListener('submit', loadmovies);
 
 function loadmovies(e){
 
-    var limit;
+    var limit = 50;
+    
     try {
-        limit = parseInt(maxRes.value, 10);
-        if(limit > 50){
-            limit = 50;
+        if(maxRes.value != ""){
+            limit = parseInt(maxRes.value, 10);
+            if(limit > 50){
+                limit = 50;
+            }
+            if(limit < 1){
+                limit = 50;
+            }
         }
-        if(limit < 1){
-            limit = 50;
-        }
+        
     } catch (error) {
         limit = 50;
     }
@@ -34,6 +39,9 @@ function loadmovies(e){
         if(len > limit){
             len = limit;
         }
+        if(len > 50){
+            len = 50;
+        }
         var output = '';
         for(let i = 0; i < len; i++){
             try {
@@ -44,12 +52,15 @@ function loadmovies(e){
                     output += '"></img>';
                 }
                 if(res.data.collection.items[i].data[0].media_type == "video"){
-                    output += '<video controls>';
-                    output += '<source src="';
-                    //output += res.data.collection.items[i].links[0].href;
-                    output += res.data.collection.items[i].links[0].href.replace("thumb.jpg", "orig.mp4")
-                    output += '">';
-                    output += '</video>';
+
+                    if(vidCheck.checked == true){
+                        output += '<video controls>';
+                        output += '<source src="';
+                        output += res.data.collection.items[i].links[0].href.replace("thumb.jpg", "orig.mp4")
+                        output += '">';
+                        output += '</video>';
+                        
+                    }
                     
                 }
                

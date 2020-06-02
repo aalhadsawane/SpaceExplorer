@@ -5,9 +5,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:ital@0;1&family=IBM+Plex+Sans:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&display=swap" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+
+   
 
     <title>SpaceExplorer</title>
   </head>
@@ -26,11 +31,20 @@
         <form id="movieForm">
             
                 
-                <input type="text" class="form-control" placeholder="Search for heavenly objects or space projects" id="movieTitle" name="movieTitle">
+                <input type="text" autocomplete="off" class="form-control" placeholder="Search for celestial objects or projects" id="movieTitle" name="movieTitle">
             
+            
+            <input type="submit" form="movieForm" class="btn btn-dark btn-block" value="Search" id="search">
             <div class="formrow">
-            <input type="submit" form="movieForm" class="btn btn-dark btn-block d-inline" value="Search" id="search">
-            <input type="text" class="d-inline form-control" placeholder="Max results" id="maxres">
+              <input type="text" autocomplete="off" class="d-inline form-control" placeholder="Max results" id="maxres">
+              <div id="check" class="d-inline">
+                
+                <input type="checkbox" checked="checked" id="vidCheck" name="vidChecker" value="Vid">
+                <label for="vidCheck">
+                Show videos
+                </label>
+              </div>
+            
           </div>
         </form>
         

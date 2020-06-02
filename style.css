@@ -6,28 +6,47 @@
     background-color: rgb(230, 230, 230);
     margin-bottom: 1rem;
 }
+
+html{
+    font-family: 'Nunito Sans', sans-serif;
+}
 .formrow{
     display: flex;
     margin-bottom: 10px;
     margin-top: 10px;
-    justify-content: center;
+    justify-content: stretch;
 }
 #maxres{
-    flex-basis: 15%;
+    flex-basis: 50%;
     
     height: 42px;
-    
-    
-    font-size: small;
 }
-@media only screen and (max-width: 600px) {
-    #maxres{
-        flex-basis: 44%;
-    }
-    #search{
-        flex-basis: 56%;
-    }
+
+#check{
+    height: 42px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    background-color: rgb(95, 95, 95);
+    color: white;
+    flex-basis: 50%;
+    border-radius: 2px;
 }
+
+
+label{
+
+    max-height: 42px;
+    padding: 10px;
+    vertical-align: middle;
+    margin: 0;
+
+}
+[type="checkbox"]
+{
+    vertical-align:middle;
+}
+
 
 #search{
     height: 42px;
