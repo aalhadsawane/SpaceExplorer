@@ -50,8 +50,6 @@ function loadmovies(e){
                     output += res.data.collection.items[i].links[0].href.replace("thumb.jpg", "orig.mp4")
                     output += '">';
                     output += '</video>';
-                    console.log(res.data.collection.items[i].links[0].href);
-                    console.log(res.data.collection.items[i].data[0].media_type);
                     
                 }
                

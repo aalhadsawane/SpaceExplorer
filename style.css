@@ -89,9 +89,6 @@ video{
 }
 p {
     max-width: 100%;
-    
-    overflow: auto;
-    text-overflow: ellipsis;
 }
 #movieTitle{
     width: 100%;
