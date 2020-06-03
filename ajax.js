@@ -100,7 +100,12 @@ function loadmovies(e){
                         output += '</div>'
                         output += '</div>'
                     }
-                    
+                    if(vidCheck.checked == false){
+                        len += 1;
+                        if(len > 100){
+                            len = 100;
+                        }
+                    }
                 }
 
             } catch (error) {
@@ -118,5 +123,10 @@ function loadmovies(e){
         List.innerHTML = output;
         
         
-    }).catch(err => console.error(err));
+    }).catch(err => {
+        console.log(err);
+        var final ='';
+        final = '<div class="validSearch">'+ err +'</div>';
+        List.innerHTML = final;
+    });
 }
